@@ -107,7 +107,7 @@ void write2(int  SocketFD) {
 			 << "I -> Print list of user on the chat \n"
 			 << "L -> Login to the char\n"
 			 << "C -> Send a msg to a user on the chat\n"
-			 << "E -> End chat or logout from chat\n"
+			 << "O -> End chat or logout from chat\n"
 			 << "M -> Send chat to any users on the chat\n"
 			 << "F -> Send a file from a user to another user\n"
 			 << "----------------------------\n"
@@ -154,11 +154,11 @@ void write2(int  SocketFD) {
 				users.push_back(msg);
 
 
-		} else if (op == "E"){ // protocolo for End
+		} else if (op == "O"){ // protocolo for End
 
 			//Protocolo:
 			msg = 	std::string("0000") +		// size of msg(4)
-				"E";				// E
+				"O";				// E
 				users.push_back(msg);
 
 
@@ -221,7 +221,7 @@ void write2(int  SocketFD) {
 		for (int i = 0; i < users.size(); i++) {
 			nwrite = write(SocketFD, users[i].c_str(), int(users[i].size()));
 		}
-		if(op=="E"){
+		if(op=="O"){
 			return;
 		}
 	}

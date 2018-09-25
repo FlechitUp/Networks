@@ -158,7 +158,7 @@ void read2(int ConnectFD){
 					msg="no estas conectado\n";
 					write2(otherConnectFD, msg, action);
 				}
-			} else if (action == "E"){//protocol for End
+			} else if (action == "O"){//protocol for End
 				std::vector<std::string> V;
 				for (auto it=clients.begin();it!=clients.end();it++){
 					if(it->second==ConnectFD){

@@ -106,7 +106,7 @@ void write2(int  SocketFD) {
 		std::cout << "------Menu (action)-----\n"
 			 << "I -> Print list of user on the chat \n"
 			 << "L -> Login to the char\n"
-			 << "C -> Send a msg to a user on the chat\n"
+			 << "M -> Send a msg to a user on the chat\n"
 			 << "O -> End chat or logout from chat\n"
 			 << "M -> Send chat to any users on the chat\n"
 			 << "F -> Send a file from a user to another user\n"

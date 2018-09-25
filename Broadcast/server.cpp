@@ -107,7 +107,7 @@ void read2(int ConnectFD){
 				if(login){
 					write2(ConnectFD,prnt,action);
 				} else {
-					prnt="no estas logueado";
+					prnt="E10"+"no estas logueado";
 					write2(ConnectFD,prnt,action);
 				}
 			} else if (action == "L"){//protocolo for Login
@@ -115,7 +115,7 @@ void read2(int ConnectFD){
 
 				n = read(ConnectFD, buffer, size_txt);
 				if(find_nick(std::string(buffer)) == true){ // find  a new nickname is equal to other already exists
-					std::string err="nickname already exists, enter other\n";
+					std::string err="E10nickname already exists, enter other\n";
 					write2(ConnectFD,err.c_str(),action);
 					continue;
 				}
@@ -140,7 +140,7 @@ void read2(int ConnectFD){
 				std::string msg(buffer);
 				bzero(buffer,size_msg);
 				if(find_nick(othername)==false){ //check if othername exists
-					std::string err = "nickname not found, enter other\n";
+					std::string err = "E20nickname not found, enter other\n";
 					write2(ConnectFD, err.c_str(), action);
 					continue;
 				}
@@ -168,6 +168,11 @@ void read2(int ConnectFD){
 				for (int i=0;i<V.size();i++){
 					clients.erase(V[i]);
 				}
+				/*if (clients.size()>0) {
+					prnt="E10"+"error logout, no se cerro sesion";
+					write2(otherConnectFD, prnt, action);
+
+				}*/
 				//write2(ConnectFD,"","C");
 				//std::cout << "Respondiendo Salida" <<  std::endl;
 				close(ConnectFD);

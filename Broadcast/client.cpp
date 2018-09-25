@@ -1,4 +1,6 @@
-/* Client code in C */
+/* Client code in C 
+ * g++ -o client2 client2.cpp -lpthread -std=c++11
+ */
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -102,7 +104,7 @@ void write2(int  SocketFD) {
 	while (1) {
 		msg="";
 		std::cout << "------Menu (action)-----\n"
-			 << "P -> Print list of user on the chat \n"
+			 << "I -> Print list of user on the chat \n"
 			 << "L -> Login to the char\n"
 			 << "C -> Send a msg to a user on the chat\n"
 			 << "E -> End chat or logout from chat\n"
@@ -114,11 +116,11 @@ void write2(int  SocketFD) {
 		std::vector<std::string> users;
 
 
-		if (op == "P") {// protocolo for Print
+		if (op == "I") {// protocolo for Print
 
 			//Protocolo:
 			msg = 	std::string("0000")+	// size of msg
-				"P";			// P
+				"I";			// P
 				users.push_back(msg);
 
 		} else if (op == "L"){//protocolo for Login
@@ -241,7 +243,7 @@ int main(){
 
 	stSockAddr.sin_family = AF_INET;
 	stSockAddr.sin_port = htons(8888);
-	Res = inet_pton(AF_INET, "192.168.1.8", &stSockAddr.sin_addr);
+	Res = inet_pton(AF_INET, "192.168.1.2", &stSockAddr.sin_addr);
 
 	if (0 > Res) {
 		perror("error: first parameter is not a valid address family");

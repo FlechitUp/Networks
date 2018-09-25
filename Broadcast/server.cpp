@@ -1,4 +1,5 @@
-  /* Server code in C */
+  /* Server code in C
+   */
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -94,7 +95,7 @@ void read2(int ConnectFD){
 			std::string action(buffer);
 			bzero(buffer, 1);
 
-			if (action == "P"){ //Protocolo for Printing
+			if (action == "I"){ //Protocolo for Printing
 
 				std::string prnt="";
 				std::map<std::string, int>::iterator it;
@@ -238,7 +239,7 @@ void read2(int ConnectFD){
 
 bool write2(int ConnectFD, std::string mssg, std::string act){
 
-	if (act == "P" or act == "C" or act == "L" or act == "F") { // L is when a nickname is repeat
+	if (act == "I" or act == "C" or act == "L" or act == "F") { // L is when a nickname is repeat
 		mssg = fillZeros(mssg.size(),4)+"R" +mssg;
 		int nwrite= write(ConnectFD, mssg.c_str(), mssg.size());//std::cout << nwrite << "\n";
 		return true;

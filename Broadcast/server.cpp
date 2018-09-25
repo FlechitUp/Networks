@@ -107,7 +107,7 @@ void read2(int ConnectFD){
 				if(login){
 					write2(ConnectFD,prnt,action);
 				} else {
-					prnt="E10"+"no estas logueado";
+					prnt="E10no estas logueado";
 					write2(ConnectFD,prnt,action);
 				}
 			} else if (action == "L"){//protocolo for Login

@@ -1,4 +1,4 @@
-/* Client code in C 
+/* Client code in C
  * g++ -o client2 client2.cpp -lpthread -std=c++11
  */
 
@@ -243,7 +243,7 @@ int main(){
 
 	stSockAddr.sin_family = AF_INET;
 	stSockAddr.sin_port = htons(8888);
-	Res = inet_pton(AF_INET, "192.168.1.2", &stSockAddr.sin_addr);
+	Res = inet_pton(AF_INET, "192.168.1.8", &stSockAddr.sin_addr);
 
 	if (0 > Res) {
 		perror("error: first parameter is not a valid address family");

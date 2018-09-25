@@ -136,7 +136,7 @@ void write2(int  SocketFD) {
 
 				users.push_back(msg);
 
-		} else if (op == "C")	{ //protocolo for Chat
+		} else if (op == "M")	{ //protocolo for Chat
 
 			std::string nickname="";
 			std::cout<<"enter nickname to chat: ";
@@ -147,7 +147,7 @@ void write2(int  SocketFD) {
 			getline(std::cin,msg); //scan with spaces
 			//Protocolo:
 			msg=	fillZeros(msg.size(),4)+	// size of msg(4)
-				"C"+ 				// C
+				"M"+ 				// C
 				fillZeros(nickname.size(),2)+	// nickname size(2)
 				nickname+			// nickname
 				msg;				// msg
@@ -205,7 +205,7 @@ void write2(int  SocketFD) {
 				getline(std::cin, nickname); //scan with spaces
 				//Protocolo:
 				temp=fillZeros(msg.size(),4)+	// size of msg(4)
-					"C"+ 				// C
+					"M"+ 				// C
 					fillZeros(nickname.size(),2)+	// nickname size(2)
 					nickname+			// nickname
 					msg;				// msg

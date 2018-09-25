@@ -122,7 +122,7 @@ void read2(int ConnectFD){
 
 				clients[buffer] = ConnectFD; //adding a newclient
 				std::cout << "Login: " << buffer << std::endl;
-			} else if (action == "C"){ //protocolo for chating
+			} else if (action == "M"){ //protocolo for chating
 				std::string username = "";
 				find_str(ConnectFD,username); //username has nickname who send to mssg
 
@@ -158,7 +158,7 @@ void read2(int ConnectFD){
 					msg="no estas conectado\n";
 					write2(otherConnectFD, msg, action);
 				}
-			} else if (action == "E"){//protocol for End
+			} else if (action == "O"){//protocol for End
 				std::vector<std::string> V;
 				for (auto it=clients.begin();it!=clients.end();it++){
 					if(it->second==ConnectFD){
@@ -228,7 +228,7 @@ void read2(int ConnectFD){
 					write(otherConnectFD,msg_file,size_file);
 				} else {
 					sendFile="no estas logueado\n";
-					write2(otherConnectFD, sendFile, "C");
+					write2(otherConnectFD, sendFile, "M");
 				}
 
 			//here file
@@ -244,7 +244,7 @@ void read2(int ConnectFD){
 
 bool write2(int ConnectFD, std::string mssg, std::string act){
 
-	if (act == "I" or act == "C" or act == "L" or act == "F") { // L is when a nickname is repeat
+	if (act == "I" or act == "M" or act == "L" or act == "F") { // L is when a nickname is repeat
 		mssg = fillZeros(mssg.size(),4)+"R" +mssg;
 		int nwrite= write(ConnectFD, mssg.c_str(), mssg.size());//std::cout << nwrite << "\n";
 		return true;
@@ -263,7 +263,7 @@ void acceptClient(int ConnectFD) {
 	}
 
 	//changing to detach();
-	write2(ConnectFD,"Bienvenido al Chat 0.0.3 Beta","C");
+	write2(ConnectFD,"Bienvenido al Chat 0.0.3 Beta","M");
 	std::thread(read2, ConnectFD).detach();
 	std::this_thread::sleep_for(std::chrono::seconds(100));
 }
